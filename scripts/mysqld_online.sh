@@ -3,8 +3,8 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
 source $CURRENT_DIR/shared.sh;
 
-apache2_is_running() {
-  pgrep "apache2" >/dev/null 2>&1 ;
+mysqld_is_running() {
+  pgrep "mysqld" >/dev/null 2>&1 ;
   if [ $? -eq 0 ]; then
     return 0;
   else
@@ -13,7 +13,7 @@ apache2_is_running() {
 }
 
 print_icon() {
-  if $(apache2_is_running); then
+  if $(mysqld_is_running); then
     printf "$(get_tmux_option "$active_option_string" "$(active_icon_default)")";
   else
     printf "$(get_tmux_option "$inactive_option_string" "$(inactive_icon_default)")";

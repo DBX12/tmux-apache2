@@ -1,4 +1,10 @@
-#!/usr/bin/env bash
+
+active_icon_osx="✅ ";
+active_icon="✔";
+inactive_icon_osx="⛔️ ";
+inactive_icon_cygwin="X";
+inactive_icon="❌ ";
+
 is_osx() {
 	[ $(uname) == "Darwin" ]
 }
@@ -26,4 +32,22 @@ set_tmux_option() {
 	local option="$1"
 	local value="$2"
 	tmux set-option -gq "$option" "$value"
+}
+
+active_icon_default () {
+	if is_osx; then
+		echo "$active_icon_osx";
+	else
+		echo "$active_icon";
+	fi
+}
+
+inactive_icon_default() {
+	if is_osx; then
+		echo "$inactive_icon_osx";
+	elif is_cygwin; then
+		echo "$inactive_icon_cygwin";
+	else
+		echo "$inactive_icon";
+	fi
 }
