@@ -12,6 +12,12 @@ Add the interpolations to the format string in your `.tmux.conf` for your status
 
     set -g status-right "Apache2: #{apache2_status} | MySQL: #{mysqld_status} | %a %h-%d %H:%M"
 
+If the right end of your status bar contents disappears, no worries, you can increase the size of the status bar:
+
+    set -g status-right-length 60
+
+The default size of the right side of the status bar is 40.
+
 ### Configure icons
 If you don't like the icons, you can override them by setting this in your `.tmux.conf`
 
